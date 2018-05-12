@@ -1,15 +1,16 @@
 # RASER
 An Automatic System for RNA-Seq Data Analysis
 
-#Running log
-################################################
-#            Welcome to the RASER!             #
-#              Author: team-gc                 #
-#          Team: Burning Team(HZAU)            #
-################################################
+# Running log
+
 ------------------------------------------------
-         Process pool :  4
-          Per threads :  1
+             Welcome to the RASER!             
+               Author: team-gc                 
+           Team: Burning Team(HZAU)     
+------------------------------------------------
+------------------------------------------------
+              Process pool :  4
+               Per threads :  1
 ------------------------------------------------
 different-gene-expression-Operation-switch : OPEN
 allele-specific-expression-Operation-switch : OPEN
