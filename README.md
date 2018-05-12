@@ -31,5 +31,15 @@ An Automatic System for RNA-Seq Data Analysis
     Deseq...
     Cuffdiff...
 
-#Results
+# Pipeline
 ![image](https://github.com/clsteam/RASER/blob/master/image/%E5%9B%BE%E7%89%871.png)
+![image](https://github.com/clsteam/RASER/blob/master/image/%E5%9B%BE%E7%89%872.png)
+![image](https://github.com/clsteam/RASER/blob/master/image/%E5%9B%BE%E7%89%873.png)
+![image](https://github.com/clsteam/RASER/blob/master/image/%E5%9B%BE%E7%89%874.png)
+![image](https://github.com/clsteam/RASER/blob/master/image/%E5%9B%BE%E7%89%875.png)
+![image](https://github.com/clsteam/RASER/blob/master/image/%E5%9B%BE%E7%89%876.png)
+![image](https://github.com/clsteam/RASER/blob/master/image/%E5%9B%BE%E7%89%877.png)
+![image](https://github.com/clsteam/RASER/blob/master/image/%E5%9B%BE%E7%89%878.png)
+![image](https://github.com/clsteam/RASER/blob/master/image/%E5%9B%BE%E7%89%879.png)
+![image](https://github.com/clsteam/RASER/blob/master/image/%E5%9B%BE%E7%89%8711.png)
+![image](https://github.com/clsteam/RASER/blob/master/image/%E5%9B%BE%E7%89%8712.png)
