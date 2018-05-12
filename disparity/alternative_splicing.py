@@ -58,7 +58,8 @@ def piechart(event_dict,path,name):
 
 class Alter_splice:
 
-    def __init__(self,FAD,mark):
+    def __init__(self,FAD,BPD,mark):
+        self.BPD=BPD
         self.FAD=FAD
         self.mark = mark
         self.configparser_object=configparser()
@@ -72,42 +73,44 @@ class Alter_splice:
         self.run()
 
     def run(self):
-        self.color.print_debug("   @"+self.mark+"as-1 ...")
-        shell_cmd="cuffcompare -r "+self.annotations+" -s "+self.genome+" -C -o "+self.FAD.alter_splice_dir+"/prefix_1 "+self.FAD.cufflinks_dir+"/transcripts.gtf"
-        run(shell_cmd)
-        self.color.print_debug("   @"+self.mark+"as-2 ...")
-        shell_cmd=self.extract_as+" "+self.FAD.cufflinks_dir+"/transcripts.gtf "+self.hdrs+" -r "+self.FAD.cufflinks_dir+"/prefix_1.transcripts.gtf.tmap "+self.annotations+" >"+self.FAD.alter_splice_dir+"/lung_total.as"
-        run(shell_cmd)
-        shell_cmd=self.summarize_as+" "+self.FAD.cufflinks_dir+"/transcripts.gtf "+self.FAD.alter_splice_dir+"/lung_total.as -p "+self.FAD.alter_splice_dir+"/prefix_2"
-        run(shell_cmd)
+        if not self.BPD.Alter_splice:
+            self.color.flush_print("@" + mark + "Alter splice")
+            self.color.print_debug("   @"+self.mark+"as-1 ...")
+            shell_cmd="cuffcompare -r "+self.annotations+" -s "+self.genome+" -C -o "+self.FAD.alter_splice_dir+"/prefix_1 "+self.FAD.cufflinks_dir+"/transcripts.gtf"
+            run(shell_cmd)
+            self.color.print_debug("   @"+self.mark+"as-2 ...")
+            shell_cmd=self.extract_as+" "+self.FAD.cufflinks_dir+"/transcripts.gtf "+self.hdrs+" -r "+self.FAD.cufflinks_dir+"/prefix_1.transcripts.gtf.tmap "+self.annotations+" >"+self.FAD.alter_splice_dir+"/lung_total.as"
+            run(shell_cmd)
+            shell_cmd=self.summarize_as+" "+self.FAD.cufflinks_dir+"/transcripts.gtf "+self.FAD.alter_splice_dir+"/lung_total.as -p "+self.FAD.alter_splice_dir+"/prefix_2"
+            run(shell_cmd)
 
-        self.color.print_debug("   @"+self.mark+"as-3 ...")
-        shell_cmd=self.ea_fpkm+" "+self.FAD.cufflinks_dir+"/transcripts.gtf "+self.hdrs+" "+self.FAD.alter_splice_dir+"/prefix_2.as.nr >"+self.FAD.alter_splice_dir+"/fpkm_"+self.FAD.accession
-        run(shell_cmd)
+            self.color.print_debug("   @"+self.mark+"as-3 ...")
+            shell_cmd=self.ea_fpkm+" "+self.FAD.cufflinks_dir+"/transcripts.gtf "+self.hdrs+" "+self.FAD.alter_splice_dir+"/prefix_2.as.nr >"+self.FAD.alter_splice_dir+"/fpkm_"+self.FAD.accession
+            run(shell_cmd)
 
-        self.color.print_debug("   @"+self.mark+"as-4 ...")
-        ct=pd.read_table(self.FAD.alter_splice_dir+"/fpkm_"+self.FAD.accession)
-        sped=[]
-        i=0
-        while i  < len(ct)-2:
-            wink=[]
-            wink.append(ct.iat[i,2])
-            num=ct.iat[i,8]
-            while (ct.iat[i,2]==ct.iat[i+1,2]):
-                num=num+ct.iat[i+1,8]
+            self.color.print_debug("   @"+self.mark+"as-4 ...")
+            ct=pd.read_table(self.FAD.alter_splice_dir+"/fpkm_"+self.FAD.accession)
+            sped=[]
+            i=0
+            while i  < len(ct)-2:
+                wink=[]
+                wink.append(ct.iat[i,2])
+                num=ct.iat[i,8]
+                while (ct.iat[i,2]==ct.iat[i+1,2]):
+                    num=num+ct.iat[i+1,8]
+                    i=i+1
+                wink.append(num)
+                sped.append(wink)
                 i=i+1
-            wink.append(num)
-            sped.append(wink)
-            i=i+1
 
-        self.alter_splice_save(sped,self.FAD.alter_splice_dir+"/"+self.FAD.accession+'.mini')
-        f=open(self.FAD.alter_splice_dir+"/"+self.FAD.accession+'.mini')
-        h=open(self.FAD.alter_splice_dir+"/"+self.FAD.accession+'.mini_nozore','w')
-        for line in f:
-            if line[-2]!='0' and line.startswith("ENSG"):
-                h.writelines(line)
-        h.close()
-        plot_go(self.FAD.alter_splice_dir,"fpkm_"+self.FAD.accession)
+            self.alter_splice_save(sped,self.FAD.alter_splice_dir+"/"+self.FAD.accession+'.mini')
+            f=open(self.FAD.alter_splice_dir+"/"+self.FAD.accession+'.mini')
+            h=open(self.FAD.alter_splice_dir+"/"+self.FAD.accession+'.mini_nozore','w')
+            for line in f:
+                if line[-2]!='0' and line.startswith("ENSG"):
+                    h.writelines(line)
+            h.close()
+            plot_go(self.FAD.alter_splice_dir,"fpkm_"+self.FAD.accession)
 
     def alter_splice_save(self,data,filename):
         file_object = open(filename, 'w')
