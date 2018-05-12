@@ -32,3 +32,4 @@ An Automatic System for RNA-Seq Data Analysis
     Cuffdiff...
 
 #Results
+![image](https://github.com/clsteam/RASER/blob/master/image/%E5%9B%BE%E7%89%871.png)
