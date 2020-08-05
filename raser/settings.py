@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 # Author  : Yao
 
-TOOL_ROOT_PATH = "/public/home/yxu/tools"
+import os
+# TOOL_ROOT_PATH = "/public/home/yxu/tools"
+TOOL_ROOT_PATH = os.path.join(os.path.dirname(__file__), "tools")
 
 # The tool is used as a guideline
 # All strings must be lowercase
@@ -13,16 +15,16 @@ TOOLS_SELECTED = {
     "rmdup": "samtools", # samtools, picard
     "genecount": "featurecounts",  # htseq, featurecounts, star
 
-    "strandspecific": "",
+    "strandspecific": "",  # rseqc
 
     "transcript": "stringtie",  # cufflinks, stringtie
     "variation": "gatk",  # samtools, gatk
 
     "differentialexpression": "deseq2",  # ballgown, deseq2, edger
-    "altersplice": "asprofile",
+    "altersplice": "asprofile",  # asprofile
     "fusion": "tophatfusion",  # tophatfusion, starfusion
     "lncrna": "cc",  # cc
-    "allele": "phaser",
+    "allele": "phaser",  # phaser
 }
 
 # Reads保留的最短长度
