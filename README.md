@@ -45,29 +45,32 @@ The --recursive parameter is needed to integrate the required submodules.
 All parameter configurations are divided into configuration files to facilitate classified management and operation. You can enter `--help` to view other available command line parameters:
 ```
     $ raser-manager ve -i ./config.ini --help
-		usage: raser-manager [-h] [-i INI] [-s] [-t]
-		                     [-l {spam,debug,verbose,info,notice,warning,success,error,critical}]
-		                     [-c] [-m]
-		                     {ve,pl}
+    usage: raser-manager [-h] [-i INI] [-s] [-t]
+                         [-l {spam,debug,verbose,info,notice,warning,success,error,critical}]
+                         [-c] [-m]
+                         {ve,pl}
 
-		positional arguments:
-		  {ve,pl}               ve: vertebrate, pl: plant
+    positional arguments:
+      {ve,pl}               ve: vertebrate, pl: plant
 
-		optional arguments:
-		  -h, --help            show this help message and exit
-		  -i INI, --ini INI     configuration file, default {RASER_HOME}/config.ini
-		  -s, --server          submit tasks to server compute nodes (PBS)
-		  -t, --test            for testing, only run a sample in the main process
-		  -l {spam,debug,verbose,info,notice,warning,success,error,critical}, --level {spam,debug,verbose,info,notice,warning,success,error,critical}
-		                        logger level
-		  -c, --comm            output the complete command submitted by the task
-		  -m, --sim             simplified process
+    optional arguments:
+      -h, --help            show this help message and exit
+      -i INI, --ini INI     configuration file, default {RASER_HOME}/config.ini
+      -s, --server          submit tasks to server compute nodes (PBS)
+      -t, --test            for testing, only run a sample in the main process
+      -l {spam,debug,verbose,info,notice,warning,success,error,critical}, --level {spam,debug,verbose,info,notice,warning,success,error,critical}
+                            logger level
+      -c, --comm            output the complete command submitted by the task
+      -m, --sim             simplified process
 ```
+example：
 
+ ![image](https://github.com/clsteam/Raser/blob/master/img/logging.png)
+ 
 ## Result
 * After you complete the task submission, you can find your output log and results in your output directory:
 ```
-output_raser
+.output_raser
 ├── allele
 ├── diff
 ├── assembly_gtf_list.txt
@@ -117,7 +120,7 @@ output_raser
 ```
 * Output folder structure of each sample
 ```
-.
+.ERR315326
 ├── alter_splice_out
 │   ├── prefix_1.combined.gtf
 │   ├── prefix_1.loci
