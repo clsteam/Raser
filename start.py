@@ -220,6 +220,7 @@ def single2(logger, ini: Ini):
 
 
 def main(server=False, category="ve", ini_file="", level="debug", test=0, sim=False):
+    test = int(test)
 
     # 计时开始
     tic = time.perf_counter()
