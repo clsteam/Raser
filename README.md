@@ -65,7 +65,7 @@ All parameter configurations are divided into configuration files to facilitate 
 ```
 example：
 
- ![image](https://github.com/clsteam/Raser/blob/master/img/logging.png)
+ ![image](img/logging.png)
  
 ## Result
 * After you complete the task submission, you can find your output log and results in your output directory:
