@@ -1,12 +1,33 @@
-# README
-所有的流程文件中包含相应的软件，定义规则如下：
-- raser.py决定流程顺序， 享有绝对决定权，其他文件什么的命名顺序只是常规的分析流程顺序。
-- 以软件优先原则，继承Tools的子类可以增加相应的功能函数
-（不能因为此功能在其他流程中而在此创建新Tools子类）
-Installation
-******
-Note: all tools need to be in the environment variable.
+# Raser
+**A pipeline that automatically analyzes RNA-Seq data**
+## Introduction
+RNA-Seq is a new transcriptome research method, with high efficiency, high sensitivity, and full genome analysis (for any species without pre-designing probes) and other advantages. Currently, a variety of analysis tools have been developed for RNA-Seq data, including data preprocessing, sequence alignment, transcriptome assembly, gene expression estimation, and non-coding RNA detection. However, these analysis tools basically exist independently, lacking a relatively complete system to integrate different tools to complete most of the analysis.
 
+Raser was born from this. He helps you realize most of the software installation-free configuration, parameter configuration, accurate management of multiple samples, complete log management for each sample, and some visualization tasks
+## Installing Raser
+
+Raser requires the following software and data resources to be installed. 
+>Note, if you can use our [Docker](https://github.com/STAR-Fusion/STAR-Fusion/wiki#Docker)  images, then you'll have all the software pre-installed and can hit the ground running. 
+
+###  1. Downloading from GitHub Clone
+```
+    $ git clone --recursive git@github.com:clsteam/RASER.git
+```
+The --recursive parameter is needed to integrate the required submodules.
+
+###  2. Tools Required
+
+ * Raser is developed based on Python 3.7 (if you have not installed it, you can go to the official Python website to download and install), you need to **enter the root directory of Raser** and run the following command to install the required Python dependency packages:
+
+```
+    $ pip3 install -r requirements.txt
+```
+
+* Raser packages most of the software in a separate folder, and users can use it after downloading, but some software needs to be manually installed and compiled:
+    1. 
+
+
+R
 1:FastQC(>=0.11.5)
 
 2:Trimmomatic(>=0.32)
