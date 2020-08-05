@@ -42,7 +42,50 @@ The --recursive parameter is needed to integrate the required submodules.
 ```
     $ raser-manager ve -i ./config.ini -s
 ```
-
+After you complete the task submission, you can find your output log and results in your output directory
+```
+.
+├── allele
+├── fusion
+│   └── tophatfusion
+│       ├── bam
+│       ├── prjna270114_SAMN03262977
+│       ├── prjna270114_SAMN03262978
+│       └── prjna270114_SAMN03263003
+├── log
+│   ├── pipe
+│   │   ├── SRR1706863.e
+│   │   ├── SRR1706863.o
+│   │   ├── SRR1706864.e
+│   │   ├── SRR1706864.o
+│   │   ├── SRR1706865.e
+│   │   ├── SRR1706865.o
+│   │   ├── SRR1706866.e
+│   │   ├── SRR1706866.o
+│   │   ├── SRR1706867.e
+│   │   ├── SRR1706867.o
+│   │   ├── SRR1706868.e
+│   │   ├── SRR1706868.o
+│   │   ├── SRR1706869.e
+│   │   ├── SRR1706869.o
+│   │   ├── SRR1706870.e
+│   │   ├── SRR1706870.o
+│   │   ├── SRR1706883.e
+│   │   ├── SRR1706883.o
+│   │   ├── SRR1706884.e
+│   │   ├── SRR1706884.o
+│   │   ├── SRR1706885.e
+│   │   ├── SRR1706885.o
+│   │   ├── SRR1706886.e
+│   │   └── SRR1706886.o
+│   ├── RASERCMD
+│   ├── single.e
+│   ├── single.o
+│   ├── t3.e2538219
+│   └── t3.o2538219
+├── ncRNA_out
+└── tree.MD
+```
 
 
 ## Result
