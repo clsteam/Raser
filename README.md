@@ -42,53 +42,118 @@ The --recursive parameter is needed to integrate the required submodules.
 ```
     $ raser-manager ve -i ./config.ini -s
 ```
-After you complete the task submission, you can find your output log and results in your output directory
+All parameter configurations are divided into configuration files to facilitate classified management and operation. You can enter `--help` to view other available command line parameters:
 ```
-.
-├── allele
-├── fusion
-│   └── tophatfusion
-│       ├── bam
-│       ├── prjna270114_SAMN03262977
-│       ├── prjna270114_SAMN03262978
-│       └── prjna270114_SAMN03263003
-├── log
-│   ├── pipe
-│   │   ├── SRR1706863.e
-│   │   ├── SRR1706863.o
-│   │   ├── SRR1706864.e
-│   │   ├── SRR1706864.o
-│   │   ├── SRR1706865.e
-│   │   ├── SRR1706865.o
-│   │   ├── SRR1706866.e
-│   │   ├── SRR1706866.o
-│   │   ├── SRR1706867.e
-│   │   ├── SRR1706867.o
-│   │   ├── SRR1706868.e
-│   │   ├── SRR1706868.o
-│   │   ├── SRR1706869.e
-│   │   ├── SRR1706869.o
-│   │   ├── SRR1706870.e
-│   │   ├── SRR1706870.o
-│   │   ├── SRR1706883.e
-│   │   ├── SRR1706883.o
-│   │   ├── SRR1706884.e
-│   │   ├── SRR1706884.o
-│   │   ├── SRR1706885.e
-│   │   ├── SRR1706885.o
-│   │   ├── SRR1706886.e
-│   │   └── SRR1706886.o
-│   ├── RASERCMD
-│   ├── single.e
-│   ├── single.o
-│   ├── t3.e2538219
-│   └── t3.o2538219
-├── ncRNA_out
-└── tree.MD
-```
+    $ raser-manager ve -i ./config.ini --help
+		usage: raser-manager [-h] [-i INI] [-s] [-t]
+		                     [-l {spam,debug,verbose,info,notice,warning,success,error,critical}]
+		                     [-c] [-m]
+		                     {ve,pl}
 
+		positional arguments:
+		  {ve,pl}               ve: vertebrate, pl: plant
+
+		optional arguments:
+		  -h, --help            show this help message and exit
+		  -i INI, --ini INI     configuration file, default {RASER_HOME}/config.ini
+		  -s, --server          submit tasks to server compute nodes (PBS)
+		  -t, --test            for testing, only run a sample in the main process
+		  -l {spam,debug,verbose,info,notice,warning,success,error,critical}, --level {spam,debug,verbose,info,notice,warning,success,error,critical}
+		                        logger level
+		  -c, --comm            output the complete command submitted by the task
+		  -m, --sim             simplified process
+```
 
 ## Result
+* After you complete the task submission, you can find your output log and results in your output directory:
+```
+output_raser
+├── allele
+├── diff
+├── assembly_gtf_list.txt
+├── fusion
+│   └── tophatfusion
+│       └── bam
+├── lnc_potential.gtf
+├── lncrna.gtf
+├── log
+│   ├── pipe (the log file of each process or sample, named after the sample)
+│   │   ├── SRR196226.e
+│   │   ├── SRR196226.o
+│   │   ├── SRR196227.e
+│   │   ├── SRR196227.o
+│   │   ├── SRR196228.e
+│   │   ├── SRR196228.o
+│   │   ├── SRR196229.e
+│   │   ├── SRR196229.o
+│   │   ├── SRR196230.e
+│   │   ├── SRR196230.o
+│   │   ├── SRR196231.e
+│   │   └── SRR196231.o
+│   ├── RASERCMD (record all commands run by Raser)
+│   ├── raser-PRJNA142905.e2538136 (main process log file)
+│   ├── raser-PRJNA142905.o2538136
+│   ├── single.e (additional log file in other languages such as R)
+│   └── single.o
+├── merged.gtf
+├── ncRNA_out
+│   ├── cnci
+│   │   ├── ambiguous_genes.gtf
+│   │   ├── compare_2_infor.txt
+│   │   ├── filter_out_noncoding.gtf
+│   │   ├── novel_coding.gtf
+│   │   └── novel_lincRNA.gtf
+│   ├── CNCI.index
+│   ├── CPC.txt
+│   ├── lnc.fasta
+│   ├── lncfinder.R
+│   └── lnc_predict.statistics
+├── origin.annotated.gtf
+├── origin.loci
+├── origin.merged.gtf.refmap
+├── origin.merged.gtf.tmap
+├── origin.stats
+└── origin.tracking
+```
+* Output folder structure of each sample
+```
+.
+├── alter_splice_out
+│   ├── prefix_1.combined.gtf
+│   ├── prefix_1.loci
+│   ├── prefix_1.redundant.gtf
+│   ├── prefix_1.stats
+│   ├── prefix_1.tracking
+│   ├── prefix_2.as.nr
+│   ├── prefix_2.as.summary
+│   ├── ERR315326.xfpkm
+│   └── total.as
+├── ERR315326_1_clean.fq.gz
+├── ERR315326_2_clean.fq.gz
+├── ERR315326.bam
+├── ERR315326.bam.bai
+├── ERR315326.counts
+├── ERR315326.counts.summary
+├── ERR315326.lnc.counts
+├── ERR315326.lnc.counts.summary
+├── fastqc_out
+│   ├── adapter.fa
+│   ├── ERR315326_1_clean_fastqc.html
+│   ├── ERR315326_1_fastqc.html
+│   ├── ERR315326_2_clean_fastqc.html
+│   └── ERR315326_2_fastqc.html
+├── tophat_out
+│   └── align_summary.txt
+├── transcript_out
+│   └── transcripts.gtf
+├── tree.MD
+└── variation_out
+    ├── ERR315326.vcf.gz
+    ├── ERR315326.vcf.gz.tbi
+    ├── org.vcf.gz
+    └── org.vcf.gz.tbi
+```
+
 
 ## Configuration
 #### * Raser将所有的软件运行参数都放入了配置文件中，分成两个部分，一个是`raser/setting.py`，宁外一个是`config.ini`:
@@ -218,61 +283,3 @@ STRAND_SPECIFIC_USE_AUTOMATICALLY = False
 # Even if there is no control sample, compulsory assembly of transcripts, default False
 ENFORCE_ASSEMBLY = False
 ```
-
-
-2.config.ini
-R
-1:FastQC(>=0.11.5)
-
-2:Trimmomatic(>=0.32)
-
-3:Samtools(>=1.3.1)
-
-4:Tophat2(>=2.1.0)
-
-5:Cufflinks(>=2.2.1)
-
----
-
-#### manager.py
-主要提供外部接口参数
-- culster：运行环境选在集群中
----
-
-raser/
--
-#### settings.py
-- 参数配置文件位置
-- 工具选择
----
-
-core/
--
-#### base.py
-提供接口类
-#### rdconf.py
-提供基本的常量（从配置文件中读取）
-- 配置文件句柄conf
-- CMD_PBS
-- EXPERIMENT_GROUP, CONTROL_GROUP
----
-
-### INSTALL
-1. need to export path
-
-    
-    RASER_TOOL_HOME = ~/tools
-    export PATH=${RASER_TOOL_HOME}/blast
-
-2. need to installed and export path
-- samtools
-
-3. python3
-- RSeQC
-- HTSeq
-
-R
-- DESeq2
-- Ballgown
-
-
