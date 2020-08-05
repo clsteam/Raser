@@ -1,0 +1,18 @@
+# Windows:
+desktop.ini
+
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
+
+# Pycharm
+.idea
+
+# My configurations:
+*.ico
+
+

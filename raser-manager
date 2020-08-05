@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Author  : Yao
+""" raser manager
+"""
+
+import argparse
+import subprocess
+import os
+
+from core.ilog import Ini
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def dict_to_string(d: dict, prefix="--") -> str:
+    return " ".join(map(lambda x: prefix + " ".join(x), d.items()))
+
+
+def manage():
+    # arguments passed
+    parser = argparse.ArgumentParser()
+
+    # required
+    parser.add_argument("category", choices=["ve", "pl"], help="ve: vertebrate, pl: plant")
+
+    # optional
+    parser.add_argument("-i", "--ini", help="configuration file, default {RASER_HOME}/config.ini", default="default")
+    parser.add_argument("-s", "--server", help="submit tasks to server compute nodes (PBS)", action="store_true")
+    parser.add_argument("-t", "--test", help="for testing, only run a sample in the main process", action="store_true")
+    parser.add_argument("-l", "--level", help="logger level", choices=["spam", "debug", "verbose", "info", "notice", "warning", "success", "error", "critical"], default="debug")
+    parser.add_argument("-c", "--comm", help="output the complete command submitted by the task", action="store_true")
+    parser.add_argument("-m", "--sim", help="simplified process", action="store_true")
+
+    args = parser.parse_args()
+
+    if args.ini == "default":
+        args.ini = os.path.join(BASE_DIR, "config.ini")
+    else:
+        args.ini = os.path.realpath(os.path.expanduser(args.ini))
+
+    params_dict = {
+        "level": args.level,
+        "category": args.category,
+        "ini_file": args.ini,
+        "test": "1" if args.test else "0",
+        "sim": "1" if args.sim else "0"
+    }
+
+    if args.server:
+        ini = Ini(args.ini)
+
+        cmd = " ".join(
+            ["echo",
+             "'python3",
+             os.path.join(BASE_DIR, "start.py"),
+             "--server",
+             dict_to_string(params_dict),
+             "'|"]
+        )
+        s = subprocess.check_output(cmd + ini.cmd_pbs, shell=True, stderr=subprocess.STDOUT)
+        print("{0:*^50}".format("RASER PBS"), flush=True)
+        print("*{0: ^48}*".format("JOB ID :" + s.decode("utf-8").strip()), flush=True)
+        for key, value in ini.pbs_info.items():
+            print("*{0: ^48}*".format(" : ".join((key, value))), flush=True)
+        print("*{0: ^48}*".format(" : ".join(("log path", ini.log_path))), flush=True)
+        print("*" * 50, flush=True)
+        if args.comm:
+            print(cmd + ini.cmd_pbs)
+    else:
+        from start import main
+        main(**params_dict)
+
+
+if __name__ == '__main__':
+    manage()
