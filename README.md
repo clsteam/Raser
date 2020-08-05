@@ -65,7 +65,7 @@ All parameter configurations are divided into configuration files to facilitate 
 ```
 example：
 
- ![image](img/logging.png)
+ ![image](http://i1.fuimg.com/724614/3775734b6c9882bd.png)
  
 ## Result
 * After you complete the task submission, you can find your output log and results in your output directory:
