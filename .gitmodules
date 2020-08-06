@@ -7,3 +7,9 @@
 [submodule "tools/ncbi/sra-tools"]
 	path = tools/ncbi/sra-tools
 	url = https://github.com/ncbi/sra-tools.git
+[submodule "tools/ncbi/ngs"]
+	path = tools/ncbi/ngs
+	url = https://github.com/ncbi/ngs.git
+[submodule "tools/ncbi/ncbi-vdb"]
+	path = tools/ncbi/ncbi-vdb
+	url = https://github.com/ncbi/ncbi-vdb.git
