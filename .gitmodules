@@ -1,0 +1,3 @@
+[submodule "tools/sra-tools"]
+	path = tools/sra-tools
+	url = git@github.com:ncbi/sra-tools.git
