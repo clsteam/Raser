@@ -1,3 +1,9 @@
 [submodule "tools/sra-tools"]
 	path = tools/sra-tools
 	url = git@github.com:ncbi/sra-tools.git
+[submodule "tools/FastQC"]
+	path = tools/FastQC
+	url = git@github.com:s-andrews/FastQC.git
+[submodule "tools/ncbi/sra-tools"]
+	path = tools/ncbi/sra-tools
+	url = https://github.com/ncbi/sra-tools.git
