@@ -11,7 +11,7 @@ Raser requires the following software and data resources to be installed.
 
 ###  1. Downloading from GitHub Clone
 ```
-    $ git clone --recursive git@github.com:clsteam/RASER.git
+    $ git clone --recursive git@github.com:clsteam/Raser.git
     $ cd Raser
     $ chmod 744 raser-manager
 ```
