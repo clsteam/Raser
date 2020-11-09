@@ -251,7 +251,7 @@ ps: Double-ended data identification is unified as **_1.[fq|fastq][|.gz]** and *
 
     
 ##### 2. `raser/setting.py` aims to select analysis tools
-```
+``` ruby
 # The tool is used as a guideline
 # All strings must be lowercase
 TOOLS_SELECTED = {
