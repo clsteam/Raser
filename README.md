@@ -43,7 +43,7 @@ The --recursive parameter is needed to integrate the required submodules.
     $ raser-manager ve -i ./config.ini -s
 ```
 All parameter configurations are divided into configuration files to facilitate classified management and operation. You can enter `--help` to view other available command line parameters:
-``` ruby
+``` sh
     $ raser-manager ve -i ./config.ini --help
     usage: raser-manager [-h] [-i INI] [-s] [-t]
                          [-l {spam,debug,verbose,info,notice,warning,success,error,critical}]
