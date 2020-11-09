@@ -10,7 +10,7 @@ Raser requires the following software and data resources to be installed.
 >Note, if you can use our [Docker](https://github.com/STAR-Fusion/STAR-Fusion/wiki#Docker)  images, then you'll have all the software pre-installed and can hit the ground running. 
 
 ###  1. Downloading from GitHub Clone
-``` ruby
+``` sh
     $ git clone --recursive git@github.com:clsteam/RASER.git
     $ cd Raser
     $ chmod 744 raser-manager
@@ -69,7 +69,7 @@ example：
  
 ## Result
 * After you complete the task submission, you can find your output log and results in your output directory:
-``` ruby
+```
 .output_raser
 ├── allele
 ├── diff
