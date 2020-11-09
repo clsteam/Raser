@@ -23,7 +23,7 @@ The --recursive parameter is needed to integrate the required submodules.
 
  * Raser is developed based on Python 3.7 (if you have not installed it, you can go to the official Python website to download and install), you need to **enter the root directory of Raser** and run the following command to install the required Python dependency packages:
 
-``` ruby
+``` sh
     $ pip3 install -r requirements.txt
 ```
 
@@ -35,15 +35,15 @@ The --recursive parameter is needed to integrate the required submodules.
 
 
 * First of all, we can take a look at what are the command line parameters of Raser, you can enter the following code:
-``` ruby
+``` sh
     $ raser-manager ve -i ./config.ini
 ```
 * If you want to submit a task to run on the PBS server, you can add the `-s/--server` parameter:
-``` ruby
+``` sh
     $ raser-manager ve -i ./config.ini -s
 ```
 All parameter configurations are divided into configuration files to facilitate classified management and operation. You can enter `--help` to view other available command line parameters:
-``` ruby
+``` sh
     $ raser-manager ve -i ./config.ini --help
     usage: raser-manager [-h] [-i INI] [-s] [-t]
                          [-l {spam,debug,verbose,info,notice,warning,success,error,critical}]
